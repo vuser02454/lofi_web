@@ -200,16 +200,18 @@ const LoFiDashboard = () => {
 
   return (
     <>
-      {/* ── Toggle FAB ── */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className={`fixed top-5 z-50 w-14 h-14 rounded-2xl glass-panel flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-500 shadow-lg group ${isOpen ? 'right-5 sm:right-[440px]' : 'right-5'}`}
-        style={{ color: '#1c1c19' }}
-      >
-        <span className="material-symbols-outlined text-2xl transition-transform duration-300 group-hover:rotate-90">
-          {isOpen ? 'close' : 'tune'}
-        </span>
-      </button>
+      {/* ── Toggle FAB (only visible when drawer is closed) ── */}
+      {!isOpen && (
+        <button
+          onClick={() => setIsOpen(true)}
+          className="fixed top-5 right-5 z-50 w-14 h-14 rounded-2xl glass-panel flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-500 shadow-lg group"
+          style={{ color: '#1c1c19' }}
+        >
+          <span className="material-symbols-outlined text-2xl transition-transform duration-300 group-hover:rotate-90">
+            tune
+          </span>
+        </button>
+      )}
 
       {/* ── Overlay backdrop (mobile) ── */}
       {isOpen && (
@@ -217,7 +219,7 @@ const LoFiDashboard = () => {
       )}
 
       {/* ── Drawer ── */}
-      <div className={`fixed top-0 right-0 h-full w-[85vw] max-w-[380px] sm:max-w-none sm:w-[420px] z-40 transform transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+      <div className={`fixed top-0 right-0 h-full w-[70vw] max-w-[340px] sm:max-w-none sm:w-[420px] z-40 transform transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="h-full glass-panel overflow-y-auto overflow-x-hidden"
           style={{ borderLeft: '1px solid rgba(229,226,221,0.15)' }}
         >
@@ -227,7 +229,7 @@ const LoFiDashboard = () => {
 
             {/* ── Header ── */}
             <div className="flex flex-col gap-4 mb-2">
-              <div className="flex items-center justify-between pr-14 sm:pr-0">
+              <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <img
                     alt="avatar" className="w-10 h-10 rounded-full object-cover border border-outline-variant/50"
@@ -238,10 +240,16 @@ const LoFiDashboard = () => {
                     <p className="text-base font-headline-lg leading-tight">Avery</p>
                   </div>
                 </div>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="w-10 h-10 rounded-xl bg-surface-variant/40 hover:bg-surface-variant/60 flex items-center justify-center transition-colors flex-shrink-0"
+                >
+                  <span className="material-symbols-outlined text-lg">close</span>
+                </button>
               </div>
               
               {/* Background Controls */}
-              <div className="flex items-center justify-between bg-surface-variant/40 rounded-xl p-2 px-3 pr-14 sm:pr-3 soft-shadow">
+              <div className="flex items-center justify-between bg-surface-variant/40 rounded-xl p-2 px-3 soft-shadow">
                 <span className="text-[10px] uppercase tracking-[0.15em] text-secondary font-medium hidden sm:inline-block">Scene</span>
                 <div className="flex items-center justify-end flex-1 gap-3">
                   <div className="flex items-center gap-1">
