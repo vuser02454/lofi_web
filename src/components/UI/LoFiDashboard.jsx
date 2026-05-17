@@ -217,7 +217,7 @@ const LoFiDashboard = () => {
       )}
 
       {/* ── Drawer ── */}
-      <div className={`fixed top-0 right-0 h-full w-full sm:w-[420px] z-40 transform transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+      <div className={`fixed top-0 right-0 h-full w-[85vw] max-w-[380px] sm:max-w-none sm:w-[420px] z-40 transform transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="h-full glass-panel overflow-y-auto overflow-x-hidden"
           style={{ borderLeft: '1px solid rgba(229,226,221,0.15)' }}
         >

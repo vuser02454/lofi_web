@@ -1,11 +1,11 @@
 import { create } from 'zustand';
 
 const backgrounds = [
-  { id: 'howls', name: "Howl's Castle", media: '/videos/howls.mp4' },
-  { id: 'kiki', name: "Kiki's Delivery", media: '/videos/kiki.mp4' },
-  { id: 'totoro', name: 'My Neighbor Totoro', media: '/videos/totoro.mp4' },
-  { id: 'grave', name: 'Grave of Fireflies', media: '/videos/grave.mp4' },
-  { id: 'relax', name: 'Relax Vibes', media: '/videos/relax.mp4' },
+  { id: 'kimi-1', name: "Kimi No Nawa 1", media: '/videos/Kimi No Nawa (316).mp4' },
+  { id: 'kimi-2', name: "Kimi No Nawa 2", media: '/videos/Kimi No Nawa (321).mp4' },
+  { id: 'kimi-3', name: "Kimi No Nawa 3", media: '/videos/Kimi No Nawa (336).mp4' },
+  { id: 'garden-1', name: "Garden of Words", media: '/videos/Garden of Words (288).mp4' },
+  { id: 'weathering-1', name: "Weathering With You", media: '/videos/Weathering With You (3).mp4' },
 ];
 
 const useBackgroundStore = create((set) => ({
