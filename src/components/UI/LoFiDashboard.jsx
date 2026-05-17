@@ -241,7 +241,7 @@ const LoFiDashboard = () => {
               </div>
               
               {/* Background Controls */}
-              <div className="flex items-center justify-between bg-surface-variant/40 rounded-xl p-2 px-3 soft-shadow">
+              <div className="flex items-center justify-between bg-surface-variant/40 rounded-xl p-2 px-3 pr-14 sm:pr-3 soft-shadow">
                 <span className="text-[10px] uppercase tracking-[0.15em] text-secondary font-medium hidden sm:inline-block">Scene</span>
                 <div className="flex items-center justify-end flex-1 gap-3">
                   <div className="flex items-center gap-1">
