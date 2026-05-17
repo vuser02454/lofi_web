@@ -327,15 +327,15 @@ const LoFiDashboard = () => {
                     ) : (
                       <div className="flex flex-col w-full gap-3 mt-2 px-3 pb-4">
                         <form onSubmit={handleSpotifySubmit} className="relative flex items-center w-full">
-                          <span className="material-symbols-outlined absolute left-3 text-gray-500 text-base pointer-events-none">link</span>
+                          <span className="material-symbols-outlined absolute left-3.5 text-gray-500 text-lg pointer-events-none">link</span>
                           <input 
                             type="text" 
                             value={spotifyInput}
                             onChange={(e) => setSpotifyInput(e.target.value)}
                             placeholder="Paste Spotify link..."
-                            className="w-full bg-[#252525] border border-[#333] rounded-xl pl-9 pr-16 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500/50 transition-all placeholder:text-gray-500 shadow-sm"
+                            className="w-full bg-[#252525] border border-[#333] rounded-xl pl-11 pr-20 py-3.5 text-sm text-white focus:outline-none focus:border-purple-500/50 transition-all placeholder:text-gray-500 shadow-sm"
                           />
-                          <button type="submit" className="absolute right-1.5 top-1.5 bottom-1.5 px-3 bg-[#3f3f46] hover:bg-[#4a4a52] text-white rounded-lg text-[10px] font-bold tracking-wider uppercase transition-colors flex items-center justify-center">
+                          <button type="submit" className="absolute right-1.5 top-1.5 bottom-1.5 px-4 bg-[#3f3f46] hover:bg-[#4a4a52] text-white rounded-lg text-xs font-bold tracking-wider uppercase transition-colors flex items-center justify-center">
                             Load
                           </button>
                         </form>
