@@ -126,70 +126,82 @@ body {
 @layer utilities {
     .grain-texture {
         background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDc9Y7hRDZg1BWQuh5T6_YEM6aTFQIEie16yHMfsFa_0GFrIrZGxRONeOzCigTmcwjGD-XcgDcfV3JDiT87K4sbIK5KSq4Dxk5unb6A2rxUR_KZGlsH-aKsH3Da57ajG8eqhM9i6r1c-JU5nM5OnzIQnvCWfvy6Jb6fw4dojKLo5gnKw0m6rs_G6uHT8X_1Xb5dbnQbedl55q5Rqhqzcy58w6jmPXopGrLDuAGncO_cgdNyULsjzw70gHgyLNe3QPm6Egld_rtZ6mnU');
-        opacity: 0.05;
+        opacity: 0.03;
         pointer-events: none;
     }
-    .soft-shadow {
-        box-shadow: 0 8px 32px rgba(99, 83, 135, 0.12), 0 2px 8px rgba(0,0,0,0.06);
+    
+    /* ── Dark Mode UI Utilities ── */
+    .dark-drawer {
+        background-color: #121212;
+        border-left: 1px solid #2a2a2a;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
+        color: #ffffff;
     }
-    .analog-border {
-        border: 1px solid rgba(229, 226, 221, 0.25);
+    .dark-card {
+        background-color: #1e1e1e;
+        border: 1px solid #2a2a2a;
+        border-radius: 20px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     }
-    .glass-panel {
-        background: rgba(252, 249, 244, 0.75);
-        backdrop-filter: blur(24px) saturate(1.4);
-        -webkit-backdrop-filter: blur(24px) saturate(1.4);
-        border: 1px solid rgba(255, 255, 255, 0.3);
+    .dark-card-inner {
+        background-color: #252525;
+        border-radius: 12px;
     }
-    .drawer-glass {
-        background: rgba(252, 249, 244, 0.82);
-        backdrop-filter: blur(40px) saturate(1.5);
-        -webkit-backdrop-filter: blur(40px) saturate(1.5);
-        border-left: 1px solid rgba(255, 255, 255, 0.25);
-        box-shadow: -8px 0 40px rgba(0, 0, 0, 0.1);
+    .dark-btn-primary {
+        background: linear-gradient(135deg, #8b5cf6, #6366f1);
+        color: white;
+        font-weight: 600;
+        box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
+        transition: all 0.2s ease;
     }
-    .card-glass {
-        background: rgba(255, 255, 255, 0.45);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(229, 226, 221, 0.3);
-        box-shadow: 0 4px 20px rgba(99, 83, 135, 0.08), inset 0 1px 0 rgba(255,255,255,0.5);
+    .dark-btn-primary:hover {
+        box-shadow: 0 6px 16px rgba(139, 92, 246, 0.6);
+        transform: translateY(-1px);
     }
-    .dark .glass-panel {
-        background: rgba(49, 48, 45, 0.6);
-        border: 1px solid rgba(255, 255, 255, 0.05);
+    .dark-btn-secondary {
+        background-color: #2a2a2a;
+        color: #e2e8f0;
+        border: 1px solid #3f3f46;
+        transition: all 0.2s ease;
+    }
+    .dark-btn-secondary:hover {
+        background-color: #3f3f46;
+        color: #ffffff;
+    }
+    .dark-text-muted {
+        color: #a1a1aa;
     }
 }
 
-/* Custom range slider */
+/* Custom dark range slider */
 input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
-    height: 4px;
-    border-radius: 4px;
-    background: rgba(229, 226, 221, 0.5);
+    height: 6px;
+    border-radius: 6px;
+    background: #3f3f46;
     outline: none;
 }
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
-    background: #635387;
+    background: #8b5cf6;
     cursor: pointer;
-    box-shadow: 0 2px 6px rgba(99, 83, 135, 0.3);
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
     transition: transform 0.15s ease;
 }
 input[type="range"]::-webkit-slider-thumb:hover {
     transform: scale(1.2);
 }
 input[type="range"]::-moz-range-thumb {
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
-    background: #635387;
+    background: #8b5cf6;
     cursor: pointer;
     border: none;
-    box-shadow: 0 2px 6px rgba(99, 83, 135, 0.3);
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
 }

@@ -12,10 +12,10 @@ const TodoItem = ({ text, initialChecked = false }) => {
   const [checked, setChecked] = useState(initialChecked);
   return (
     <li className="flex items-center gap-3 group cursor-pointer py-1" onClick={() => setChecked(!checked)}>
-      <span className={`material-symbols-outlined text-lg transition-colors ${checked ? 'text-primary' : 'text-outline-variant group-hover:text-primary'}`}>
+      <span className={`material-symbols-outlined text-lg transition-colors ${checked ? 'text-purple-500' : 'text-gray-500 group-hover:text-purple-400'}`}>
         {checked ? 'check_circle' : 'radio_button_unchecked'}
       </span>
-      <span className={`text-sm transition-colors ${checked ? 'text-outline line-through' : 'text-on-surface-variant group-hover:text-on-surface'}`}>
+      <span className={`text-sm transition-colors ${checked ? 'text-gray-500 line-through' : 'text-gray-300 group-hover:text-white'}`}>
         {text}
       </span>
     </li>
@@ -27,8 +27,8 @@ const TabButton = ({ active, icon, label, onClick }) => (
     onClick={onClick}
     className={`flex-1 flex flex-col items-center gap-1 py-2.5 rounded-2xl text-xs font-medium tracking-wide uppercase transition-all duration-300 ${
       active
-        ? 'bg-primary/15 text-primary shadow-sm'
-        : 'text-outline hover:text-on-surface-variant hover:bg-surface-variant/30'
+        ? 'bg-[#2a2a2a] text-white shadow-sm border border-[#333]'
+        : 'text-gray-500 hover:text-white hover:bg-[#252525] border border-transparent'
     }`}
   >
     <span className="material-symbols-outlined text-xl" style={active ? { fontVariationSettings: "'FILL' 1" } : {}}>{icon}</span>
@@ -41,11 +41,11 @@ const AmbientSlider = ({ icon, label, enabled, volume, onToggle, onVolume }) => 
     <button
       onClick={onToggle}
       className={`w-9 h-9 rounded-xl flex items-center justify-center text-base transition-all duration-300 ${
-        enabled ? 'bg-primary/20 shadow-[0_0_10px_rgba(99,83,135,0.25)]' : 'bg-surface-variant/40'
+        enabled ? 'bg-purple-600/30 text-purple-400 shadow-[0_0_10px_rgba(147,51,234,0.3)] border border-purple-500/50' : 'bg-[#252525] text-gray-500 border border-[#333]'
       }`}
     >{icon}</button>
     <div className="flex-1 min-w-0">
-      <p className={`text-[11px] mb-1 truncate ${enabled ? 'text-on-surface' : 'text-outline'}`}>{label}</p>
+      <p className={`text-[11px] mb-1 truncate ${enabled ? 'text-white' : 'text-gray-500'}`}>{label}</p>
       <input
         type="range" min="0" max="1" step="0.01"
         value={enabled ? volume : 0}
@@ -55,7 +55,7 @@ const AmbientSlider = ({ icon, label, enabled, volume, onToggle, onVolume }) => 
           if (v > 0 && !enabled) onToggle();
           if (v === 0 && enabled) onToggle();
         }}
-        className="w-full accent-primary h-1"
+        className="w-full"
       />
     </div>
   </div>
@@ -204,8 +204,7 @@ const LoFiDashboard = () => {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed top-5 right-5 z-50 w-14 h-14 rounded-2xl glass-panel flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-500 shadow-lg group"
-          style={{ color: '#1c1c19' }}
+          className="fixed top-5 right-5 z-50 w-14 h-14 rounded-2xl bg-[#1e1e1e] border border-[#333] text-white shadow-[0_8px_16px_rgba(0,0,0,0.5)] flex items-center justify-center hover:bg-[#2a2a2a] hover:scale-105 active:scale-95 transition-all duration-300 group"
         >
           <span className="material-symbols-outlined text-2xl transition-transform duration-300 group-hover:rotate-90">
             tune
@@ -220,12 +219,10 @@ const LoFiDashboard = () => {
 
       {/* ── Drawer ── */}
       <div className={`fixed top-0 right-0 h-full w-[70vw] max-w-[340px] sm:max-w-none sm:w-[420px] z-40 transform transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-        <div className="h-full drawer-glass overflow-y-auto overflow-x-hidden"
-          style={{ borderLeft: '1px solid rgba(229,226,221,0.15)' }}
-        >
+        <div className="h-full dark-drawer overflow-y-auto overflow-x-hidden">
           <div className="absolute inset-0 grain-texture z-0 pointer-events-none"></div>
 
-          <div className="relative z-10 p-5 pt-7 pb-10 flex flex-col gap-5" style={{ color: '#1c1c19' }}>
+          <div className="relative z-10 p-5 pt-7 pb-10 flex flex-col gap-5 text-white">
 
             {/* ── Header ── */}
             <div className="flex flex-col gap-4 mb-2">
@@ -236,33 +233,33 @@ const LoFiDashboard = () => {
                     src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"
                   />
                   <div>
-                    <p className="text-[10px] uppercase tracking-[0.2em] text-secondary font-medium">Good evening</p>
+                    <p className="text-[10px] uppercase tracking-[0.2em] dark-text-muted font-medium">Good evening</p>
                     <p className="text-base font-headline-lg leading-tight">Avery</p>
                   </div>
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="w-10 h-10 rounded-xl bg-surface-variant/40 hover:bg-surface-variant/60 flex items-center justify-center transition-colors flex-shrink-0"
+                  className="w-10 h-10 rounded-xl bg-[#2a2a2a] hover:bg-[#3f3f46] flex items-center justify-center transition-colors flex-shrink-0"
                 >
                   <span className="material-symbols-outlined text-lg">close</span>
                 </button>
               </div>
               
               {/* Background Controls */}
-              <div className="flex items-center justify-between bg-surface-variant/40 rounded-xl p-2 px-3 soft-shadow">
-                <span className="text-[10px] uppercase tracking-[0.15em] text-secondary font-medium hidden sm:inline-block">Scene</span>
+              <div className="flex items-center justify-between bg-[#1e1e1e] border border-[#2a2a2a] rounded-xl p-2 px-3 shadow-sm">
+                <span className="text-[10px] uppercase tracking-[0.15em] dark-text-muted font-medium hidden sm:inline-block">Scene</span>
                 <div className="flex items-center justify-end flex-1 gap-3">
                   <div className="flex items-center gap-1">
-                    <button onClick={prevBg} className="material-symbols-outlined text-sm text-outline hover:text-primary">chevron_left</button>
-                    <span className="text-[10px] text-secondary font-medium truncate max-w-[150px]">{backgrounds[currentBg].name}</span>
-                    <button onClick={nextBg} className="material-symbols-outlined text-sm text-outline hover:text-primary">chevron_right</button>
+                    <button onClick={prevBg} className="material-symbols-outlined text-sm text-gray-400 hover:text-white">chevron_left</button>
+                    <span className="text-[10px] text-gray-300 font-medium truncate max-w-[150px]">{backgrounds[currentBg].name}</span>
+                    <button onClick={nextBg} className="material-symbols-outlined text-sm text-gray-400 hover:text-white">chevron_right</button>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* ── Tab Bar ── */}
-            <div className="flex gap-1.5 p-1 bg-surface-variant/40 rounded-2xl">
+            <div className="flex gap-1.5 p-1 bg-[#1e1e1e] border border-[#2a2a2a] rounded-2xl">
               <TabButton active={activeTab === 'music'} icon="headphones" label="Music" onClick={() => setActiveTab('music')} />
               <TabButton active={activeTab === 'pomodoro'} icon="target" label="Pomodoro" onClick={() => setActiveTab('pomodoro')} />
               <TabButton active={activeTab === 'timer'} icon="timer" label="Timer" onClick={() => setActiveTab('timer')} />
@@ -280,11 +277,11 @@ const LoFiDashboard = () => {
                   className="flex flex-col gap-5"
                 >
                   {/* Player Card */}
-                  <section className="card-glass rounded-3xl overflow-hidden flex flex-col">
+                  <section className="dark-card overflow-hidden flex flex-col">
                     {/* Source Toggle */}
-                    <div className="flex gap-1 p-2 bg-surface-variant/20">
-                      <button onClick={() => setMusicSource('local')} className={`flex-1 py-1.5 rounded-xl text-[10px] font-medium uppercase tracking-wider transition-all ${musicSource === 'local' ? 'bg-primary/20 text-primary' : 'text-outline hover:text-primary'}`}>Local Chill</button>
-                      <button onClick={() => setMusicSource('spotify')} className={`flex-1 py-1.5 rounded-xl text-[10px] font-medium uppercase tracking-wider transition-all ${musicSource === 'spotify' ? 'bg-[#1DB954]/20 text-[#1DB954]' : 'text-outline hover:text-[#1DB954]'}`}>Spotify</button>
+                    <div className="flex gap-1 p-2 bg-[#1a1a1a]">
+                      <button onClick={() => setMusicSource('local')} className={`flex-1 py-1.5 rounded-xl text-[10px] font-medium uppercase tracking-wider transition-all ${musicSource === 'local' ? 'bg-[#252525] text-purple-400 border border-[#333]' : 'text-gray-500 hover:text-white border border-transparent'}`}>Local Chill</button>
+                      <button onClick={() => setMusicSource('spotify')} className={`flex-1 py-1.5 rounded-xl text-[10px] font-medium uppercase tracking-wider transition-all ${musicSource === 'spotify' ? 'bg-[#1DB954]/20 text-[#1DB954] border border-[#1DB954]/30' : 'text-gray-500 hover:text-[#1DB954] border border-transparent'}`}>Spotify</button>
                     </div>
 
                     {musicSource === 'local' ? (
@@ -298,47 +295,47 @@ const LoFiDashboard = () => {
                             <h2 className="text-lg font-headline-lg text-white leading-tight">{track?.name || 'Midnight Coffee'}</h2>
                             <p className="text-xs text-white/60 mt-0.5">{track ? `${track.key} · ${track.bpm} BPM` : 'Analog Dreams'}</p>
                           </div>
-                          <button className="absolute top-3 right-3 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-md w-8 h-8 rounded-full flex items-center justify-center transition-colors">
+                          <button className="absolute top-3 right-3 text-gray-400 hover:text-white bg-[#1e1e1e]/60 hover:bg-[#1e1e1e] w-8 h-8 rounded-full flex items-center justify-center transition-colors">
                             <span className="material-symbols-outlined text-sm">favorite</span>
                           </button>
                         </div>
 
                         <div className="p-5 pt-4">
-                          <div className="relative w-full h-1 bg-surface-variant rounded-full overflow-hidden mb-4">
-                            <div className="absolute top-0 left-0 h-full bg-primary rounded-full" style={{ width: musicPlaying ? '100%' : '0%', transition: 'width 30s linear' }} />
+                          <div className="relative w-full h-1 bg-[#3f3f46] rounded-full overflow-hidden mb-4">
+                            <div className="absolute top-0 left-0 h-full bg-purple-500 rounded-full" style={{ width: musicPlaying ? '100%' : '0%', transition: 'width 30s linear' }} />
                           </div>
                           <div className="flex items-center justify-center gap-5">
-                            <button onClick={prevTrack} className="material-symbols-outlined text-outline hover:text-primary transition-colors text-xl">skip_previous</button>
+                            <button onClick={prevTrack} className="material-symbols-outlined text-gray-400 hover:text-white transition-colors text-xl">skip_previous</button>
                             <button onClick={handlePlayClick} disabled={loading}
-                              className={`w-12 h-12 rounded-full flex items-center justify-center shadow-md hover:scale-105 active:scale-95 transition-all ${musicPlaying ? 'bg-primary-container text-on-surface' : 'bg-primary text-on-primary'}`}>
+                              className={`w-12 h-12 rounded-full flex items-center justify-center shadow-md hover:scale-105 active:scale-95 transition-all ${musicPlaying ? 'bg-[#3f3f46] text-white' : 'dark-btn-primary'}`}>
                               {loading
                                 ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                                 : <span className="material-symbols-outlined text-2xl" style={{ fontVariationSettings: "'FILL' 1" }}>{musicPlaying ? 'pause' : 'play_arrow'}</span>}
                             </button>
-                            <button onClick={nextTrack} className="material-symbols-outlined text-outline hover:text-primary transition-colors text-xl">skip_next</button>
+                            <button onClick={nextTrack} className="material-symbols-outlined text-gray-400 hover:text-white transition-colors text-xl">skip_next</button>
                           </div>
                           {/* Volume */}
                           <div className="flex items-center gap-2 mt-4 px-1">
-                            <span className="material-symbols-outlined text-outline text-sm">volume_down</span>
+                            <span className="material-symbols-outlined text-gray-500 text-sm">volume_down</span>
                             <input type="range" min="0" max="1" step="0.01" value={musicVolume}
                               onChange={(e) => setMusicVolume(parseFloat(e.target.value))}
-                              className="flex-1 accent-primary h-1" />
-                            <span className="material-symbols-outlined text-outline text-sm">volume_up</span>
+                              className="flex-1 h-1.5" />
+                            <span className="material-symbols-outlined text-gray-500 text-sm">volume_up</span>
                           </div>
                         </div>
                       </>
                     ) : (
                       <div className="flex flex-col w-full gap-3 mt-2 px-3 pb-4">
                         <form onSubmit={handleSpotifySubmit} className="relative flex items-center w-full">
-                          <span className="material-symbols-outlined absolute left-3 text-outline-variant text-base pointer-events-none">link</span>
+                          <span className="material-symbols-outlined absolute left-3 text-gray-500 text-base pointer-events-none">link</span>
                           <input 
                             type="text" 
                             value={spotifyInput}
                             onChange={(e) => setSpotifyInput(e.target.value)}
                             placeholder="Paste Spotify link..."
-                            className="w-full bg-surface-variant/20 border border-outline-variant/20 rounded-xl pl-9 pr-16 py-2.5 text-xs text-on-surface focus:outline-none focus:border-primary/50 focus:bg-surface-variant/40 transition-all placeholder:text-outline-variant/70 backdrop-blur-sm shadow-sm"
+                            className="w-full bg-[#252525] border border-[#333] rounded-xl pl-9 pr-16 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500/50 transition-all placeholder:text-gray-500 shadow-sm"
                           />
-                          <button type="submit" className="absolute right-1.5 top-1.5 bottom-1.5 px-3 bg-primary/20 hover:bg-primary text-primary hover:text-white rounded-lg text-[10px] font-bold tracking-wider uppercase transition-colors flex items-center justify-center">
+                          <button type="submit" className="absolute right-1.5 top-1.5 bottom-1.5 px-3 bg-[#3f3f46] hover:bg-[#4a4a52] text-white rounded-lg text-[10px] font-bold tracking-wider uppercase transition-colors flex items-center justify-center">
                             Load
                           </button>
                         </form>
@@ -359,8 +356,8 @@ const LoFiDashboard = () => {
                   </section>
 
                   {/* Ambient Sounds */}
-                  <section className="card-glass rounded-3xl p-5">
-                    <h3 className="text-[10px] uppercase tracking-[0.15em] text-secondary font-medium mb-4">🎧 Ambient Sounds</h3>
+                  <section className="dark-card p-5">
+                    <h3 className="text-[10px] uppercase tracking-[0.15em] dark-text-muted font-medium mb-4">🎧 Ambient Sounds</h3>
                     <div className="space-y-3">
                       <AmbientSlider icon="🌧️" label="Rain" enabled={store.rainEnabled} volume={store.rainVolume}
                         onToggle={store.toggleRain} onVolume={store.setRainVolume} />
@@ -385,12 +382,12 @@ const LoFiDashboard = () => {
                   transition={{ duration: 0.3 }}
                   className="flex flex-col gap-5"
                 >
-                  <section className="card-glass rounded-3xl p-6 flex flex-col items-center">
+                  <section className="dark-card p-6 flex flex-col items-center">
                     {/* Mode switcher */}
-                    <div className="flex gap-1 p-1 bg-surface-variant/40 rounded-xl mb-6 w-full">
+                    <div className="flex gap-1 p-1 bg-[#252525] border border-[#333] rounded-xl mb-6 w-full">
                       {[['focus','Focus'], ['short','Short'], ['long','Long']].map(([k, l]) => (
                         <button key={k} onClick={() => switchPomodoroMode(k)}
-                          className={`flex-1 py-2 rounded-lg text-xs font-medium uppercase tracking-wider transition-all ${pomodoroMode === k ? 'bg-primary/15 text-primary' : 'text-outline hover:text-on-surface-variant'}`}>
+                          className={`flex-1 py-2 rounded-lg text-xs font-medium uppercase tracking-wider transition-all ${pomodoroMode === k ? 'bg-[#3f3f46] text-white shadow-sm' : 'text-gray-500 hover:text-white'}`}>
                           {l}
                         </button>
                       ))}
@@ -415,23 +412,23 @@ const LoFiDashboard = () => {
                     {/* Controls */}
                     <div className="flex items-center gap-4">
                       <button onClick={() => { setPomodoroSec(pomodoroPresets[pomodoroMode]); setPomodoroRunning(false); }}
-                        className="w-10 h-10 rounded-full border border-outline-variant hover:border-primary flex items-center justify-center transition-colors">
-                        <span className="material-symbols-outlined text-lg text-outline">restart_alt</span>
+                        className="w-10 h-10 rounded-full border border-[#333] hover:border-purple-500 bg-[#252525] flex items-center justify-center transition-colors text-gray-400">
+                        <span className="material-symbols-outlined text-lg">restart_alt</span>
                       </button>
                       <button onClick={() => setPomodoroRunning(!pomodoroRunning)}
-                        className={`px-8 py-3 rounded-full font-medium text-sm uppercase tracking-wider transition-all hover:scale-105 active:scale-95 ${pomodoroRunning ? 'bg-primary-container text-on-surface' : 'bg-primary text-on-primary shadow-md'}`}>
+                        className={`px-8 py-3 rounded-full font-bold text-sm uppercase tracking-wider transition-all hover:scale-105 active:scale-95 ${pomodoroRunning ? 'bg-[#3f3f46] text-white' : 'dark-btn-primary'}`}>
                         {pomodoroRunning ? 'Pause' : 'Start'}
                       </button>
                       <button onClick={() => { switchPomodoroMode(pomodoroMode === 'focus' ? 'short' : 'focus'); }}
-                        className="w-10 h-10 rounded-full border border-outline-variant hover:border-primary flex items-center justify-center transition-colors">
-                        <span className="material-symbols-outlined text-lg text-outline">skip_next</span>
+                        className="w-10 h-10 rounded-full border border-[#333] hover:border-purple-500 bg-[#252525] flex items-center justify-center transition-colors text-gray-400">
+                        <span className="material-symbols-outlined text-lg">skip_next</span>
                       </button>
                     </div>
 
                     {/* Session dots */}
                     <div className="flex gap-2 mt-6">
                       {[0,1,2,3].map((i) => (
-                        <div key={i} className={`w-2 h-2 rounded-full transition-opacity ${i === 0 ? 'bg-primary' : 'bg-primary/30'}`} />
+                        <div key={i} className={`w-2 h-2 rounded-full transition-opacity ${i === 0 ? 'bg-purple-500' : 'bg-purple-500/30'}`} />
                       ))}
                     </div>
                   </section>
@@ -448,36 +445,36 @@ const LoFiDashboard = () => {
                   transition={{ duration: 0.3 }}
                   className="flex flex-col gap-5"
                 >
-                  <section className="card-glass rounded-3xl p-6 flex flex-col items-center">
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-secondary font-medium mb-4">Stopwatch</span>
+                  <section className="dark-card p-6 flex flex-col items-center">
+                    <span className="text-[10px] uppercase tracking-[0.2em] dark-text-muted font-medium mb-4">Stopwatch</span>
 
-                    <div className="text-5xl font-headline-xl tracking-tight tabular-nums mb-6">
+                    <div className="text-5xl font-semibold tracking-tight tabular-nums mb-6">
                       {fmt(stopwatchSec)}
                     </div>
 
                     <div className="flex items-center gap-4 mb-6">
                       <button onClick={() => { setStopwatchSec(0); setStopwatchRunning(false); setLaps([]); }}
-                        className="w-10 h-10 rounded-full border border-outline-variant hover:border-primary flex items-center justify-center transition-colors">
-                        <span className="material-symbols-outlined text-lg text-outline">restart_alt</span>
+                        className="w-10 h-10 rounded-full border border-[#333] hover:border-purple-500 bg-[#252525] flex items-center justify-center transition-colors text-gray-400">
+                        <span className="material-symbols-outlined text-lg">restart_alt</span>
                       </button>
                       <button onClick={() => setStopwatchRunning(!stopwatchRunning)}
-                        className={`px-8 py-3 rounded-full font-medium text-sm uppercase tracking-wider transition-all hover:scale-105 active:scale-95 ${stopwatchRunning ? 'bg-primary-container text-on-surface' : 'bg-primary text-on-primary shadow-md'}`}>
+                        className={`px-8 py-3 rounded-full font-bold text-sm uppercase tracking-wider transition-all hover:scale-105 active:scale-95 ${stopwatchRunning ? 'bg-[#3f3f46] text-white' : 'dark-btn-primary'}`}>
                         {stopwatchRunning ? 'Pause' : 'Start'}
                       </button>
                       <button onClick={() => { if (stopwatchRunning) setLaps((p) => [...p, stopwatchSec]); }}
                         disabled={!stopwatchRunning}
-                        className="w-10 h-10 rounded-full border border-outline-variant hover:border-primary flex items-center justify-center transition-colors disabled:opacity-30">
-                        <span className="material-symbols-outlined text-lg text-outline">flag</span>
+                        className="w-10 h-10 rounded-full border border-[#333] hover:border-purple-500 bg-[#252525] flex items-center justify-center transition-colors text-gray-400 disabled:opacity-30">
+                        <span className="material-symbols-outlined text-lg">flag</span>
                       </button>
                     </div>
 
                     {/* Laps */}
                     {laps.length > 0 && (
-                      <div className="w-full border-t border-surface-variant pt-4 max-h-48 overflow-y-auto">
-                        <p className="text-[10px] uppercase tracking-[0.15em] text-secondary font-medium mb-3">Laps</p>
+                      <div className="w-full border-t border-[#333] pt-4 max-h-48 overflow-y-auto">
+                        <p className="text-[10px] uppercase tracking-[0.15em] dark-text-muted font-medium mb-3">Laps</p>
                         {laps.map((t, i) => (
-                          <div key={i} className="flex justify-between py-1.5 text-sm border-b border-surface-variant/50 last:border-b-0">
-                            <span className="text-outline">Lap {i + 1}</span>
+                          <div key={i} className="flex justify-between py-1.5 text-sm border-b border-[#333]/50 last:border-b-0 text-gray-300">
+                            <span className="text-gray-500">Lap {i + 1}</span>
                             <span className="tabular-nums font-medium">{fmt(t)}</span>
                           </div>
                         ))}
@@ -489,31 +486,31 @@ const LoFiDashboard = () => {
             </AnimatePresence>
 
             {/* ── Tasks (always visible) ── */}
-            <section className="card-glass rounded-3xl p-5">
+            <section className="dark-card p-5">
               <div className="flex justify-between items-baseline mb-4">
-                <h3 className="text-sm font-headline-lg-mobile">Unfinished notes</h3>
-                <span className="text-xs text-outline">3 items</span>
+                <h3 className="text-sm font-semibold">Unfinished notes</h3>
+                <span className="text-xs text-gray-500">3 items</span>
               </div>
               <ul className="flex flex-col gap-2">
                 <TodoItem text="Finish chapter 4 of 'The Slow Home'" initialChecked={true} />
                 <TodoItem text="Water the monstera and snake plant" />
                 <TodoItem text="Journal about today's quiet moments" />
               </ul>
-              <button className="flex items-center gap-1.5 text-outline hover:text-primary transition-colors text-xs mt-4 pt-3 border-t border-surface-variant/50">
+              <button className="flex items-center gap-1.5 text-gray-500 hover:text-white transition-colors text-xs mt-4 pt-3 border-t border-[#333] w-full justify-center">
                 <span className="material-symbols-outlined text-base">add</span>
                 Write a new thought
               </button>
             </section>
 
             {/* ── Mood ── */}
-            <section className="card-glass rounded-3xl p-5">
-              <h3 className="text-sm font-medium text-center mb-4">How are you feeling?</h3>
+            <section className="dark-card p-5">
+              <h3 className="text-sm font-semibold text-center mb-4">How are you feeling?</h3>
               <div className="flex justify-between items-center text-2xl px-2">
                 {['😔','😐','😌','😊','✨'].map((e, i) => (
                   <button key={i} className="hover:scale-125 transition-transform opacity-50 hover:opacity-100 grayscale hover:grayscale-0">{e}</button>
                 ))}
               </div>
-              <p className="mt-4 text-on-surface-variant italic text-xs text-center">
+              <p className="mt-4 text-gray-500 italic text-xs text-center">
                 "The slow rhythm of the evening is your sanctuary."
               </p>
             </section>

@@ -30,8 +30,8 @@ export default function AmbientControls() {
   ]);
 
   return (
-    <section className="card-glass rounded-3xl p-5 flex flex-col gap-4">
-      <h3 className="text-[10px] uppercase tracking-[0.15em] text-secondary font-medium">
+    <section className="dark-card p-5 flex flex-col gap-4">
+      <h3 className="text-[10px] uppercase tracking-[0.15em] dark-text-muted font-medium">
         🎧 Ambient Sounds
       </h3>
 
@@ -42,8 +42,8 @@ export default function AmbientControls() {
               onClick={() => store[toggleKey]()}
               className={`w-10 h-10 rounded-xl flex items-center justify-center text-lg transition-all duration-300 ${
                 store[enableKey]
-                  ? 'bg-primary/20 text-primary shadow-[0_0_12px_rgba(99,83,135,0.2)]'
-                  : 'bg-surface-variant/20 text-outline hover:bg-surface-variant/40'
+                  ? 'bg-purple-600/30 text-purple-400 shadow-[0_0_12px_rgba(147,51,234,0.3)] border border-purple-500/50'
+                  : 'bg-[#252525] text-gray-400 hover:bg-[#2a2a2a] border border-[#333]'
               }`}
               id={`ambient-toggle-${key}`}
               aria-label={`Toggle ${key}`}
@@ -52,7 +52,7 @@ export default function AmbientControls() {
             </button>
 
             <div className="flex-1 min-w-0 flex flex-col justify-center">
-              <p className="text-xs mb-1.5 font-medium truncate" style={{ color: store[enableKey] ? '#1c1c19' : '#7a757f' }}>
+              <p className="text-xs mb-1.5 font-medium truncate" style={{ color: store[enableKey] ? '#fff' : '#a1a1aa' }}>
                 {label.split(' ')[1]}
               </p>
               <input
