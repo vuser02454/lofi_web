@@ -74,6 +74,8 @@ const LoFiDashboard = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('music');   // music | pomodoro | timer
   const [musicSource, setMusicSource] = useState('local'); // local | spotify
+  const [spotifyInput, setSpotifyInput] = useState('');
+  const [spotifyEmbedUrl, setSpotifyEmbedUrl] = useState('https://open.spotify.com/embed/playlist/0vvXsWCC9xrXsKd4FyS8kM?utm_source=generator&theme=0');
   const [loading, setLoading] = useState(false);
   const [initialized, setInitialized] = useState(false);
   const initRef = useRef(false);
@@ -126,6 +128,20 @@ const LoFiDashboard = () => {
   const handlePlayClick = async () => {
     if (!initialized) { await initAudio(); setMusicPlaying(true); musicEngine.play(musicVolume); return; }
     toggleMusic();
+  };
+
+  const handleSpotifySubmit = (e) => {
+    e.preventDefault();
+    const match = spotifyInput.match(/spotify\.com\/(playlist|album|track|show|episode|artist)\/([a-zA-Z0-9]+)/);
+    if (match) {
+      setSpotifyEmbedUrl(`https://open.spotify.com/embed/${match[1]}/${match[2]}?utm_source=generator&theme=0`);
+    } else if (spotifyInput.includes('spotify:')) {
+      const parts = spotifyInput.split(':');
+      if (parts.length >= 3) {
+        setSpotifyEmbedUrl(`https://open.spotify.com/embed/${parts[1]}/${parts[2]}?utm_source=generator&theme=0`);
+      }
+    }
+    setSpotifyInput('');
   };
 
   /* ── Ambient sync ── */
@@ -304,17 +320,32 @@ const LoFiDashboard = () => {
                         </div>
                       </>
                     ) : (
-                      <div className="w-full h-[280px] p-2 bg-surface">
-                        <iframe 
-                          style={{ borderRadius: '12px' }} 
-                          src="https://open.spotify.com/embed/playlist/0vvXsWCC9xrXsKd4FyS8kM?utm_source=generator&theme=0" 
-                          width="100%" 
-                          height="100%" 
-                          frameBorder="0" 
-                          allowFullScreen="" 
-                          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                          loading="lazy">
-                        </iframe>
+                      <div className="flex flex-col w-full gap-3 mt-2 px-3 pb-4">
+                        <form onSubmit={handleSpotifySubmit} className="relative flex items-center w-full">
+                          <span className="material-symbols-outlined absolute left-3 text-outline-variant text-base pointer-events-none">link</span>
+                          <input 
+                            type="text" 
+                            value={spotifyInput}
+                            onChange={(e) => setSpotifyInput(e.target.value)}
+                            placeholder="Paste Spotify link..."
+                            className="w-full bg-surface-variant/20 border border-outline-variant/20 rounded-xl pl-9 pr-16 py-2.5 text-xs text-on-surface focus:outline-none focus:border-primary/50 focus:bg-surface-variant/40 transition-all placeholder:text-outline-variant/70 backdrop-blur-sm shadow-sm"
+                          />
+                          <button type="submit" className="absolute right-1.5 top-1.5 bottom-1.5 px-3 bg-primary/20 hover:bg-primary text-primary hover:text-white rounded-lg text-[10px] font-bold tracking-wider uppercase transition-colors flex items-center justify-center">
+                            Load
+                          </button>
+                        </form>
+                        <div className="w-full h-[450px] rounded-2xl overflow-hidden shadow-md border border-outline-variant/20 bg-black/5">
+                          <iframe 
+                            src={spotifyEmbedUrl} 
+                            width="100%" 
+                            height="100%" 
+                            frameBorder="0" 
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                            loading="lazy"
+                            style={{ background: 'transparent' }}
+                          >
+                          </iframe>
+                        </div>
                       </div>
                     )}
                   </section>
