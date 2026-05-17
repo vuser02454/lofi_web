@@ -130,19 +130,66 @@ body {
         pointer-events: none;
     }
     .soft-shadow {
-        box-shadow: 0 4px 12px rgba(138, 121, 175, 0.08);
+        box-shadow: 0 8px 32px rgba(99, 83, 135, 0.12), 0 2px 8px rgba(0,0,0,0.06);
     }
     .analog-border {
-        border: 1px solid rgba(229, 226, 221, 0.2);
+        border: 1px solid rgba(229, 226, 221, 0.25);
     }
     .glass-panel {
-        background: rgba(252, 249, 244, 0.7);
-        backdrop-filter: blur(20px) saturate(1.2);
-        -webkit-backdrop-filter: blur(20px) saturate(1.2);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(252, 249, 244, 0.75);
+        backdrop-filter: blur(24px) saturate(1.4);
+        -webkit-backdrop-filter: blur(24px) saturate(1.4);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .drawer-glass {
+        background: rgba(252, 249, 244, 0.82);
+        backdrop-filter: blur(40px) saturate(1.5);
+        -webkit-backdrop-filter: blur(40px) saturate(1.5);
+        border-left: 1px solid rgba(255, 255, 255, 0.25);
+        box-shadow: -8px 0 40px rgba(0, 0, 0, 0.1);
+    }
+    .card-glass {
+        background: rgba(255, 255, 255, 0.45);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(229, 226, 221, 0.3);
+        box-shadow: 0 4px 20px rgba(99, 83, 135, 0.08), inset 0 1px 0 rgba(255,255,255,0.5);
     }
     .dark .glass-panel {
         background: rgba(49, 48, 45, 0.6);
         border: 1px solid rgba(255, 255, 255, 0.05);
     }
+}
+
+/* Custom range slider */
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 4px;
+    border-radius: 4px;
+    background: rgba(229, 226, 221, 0.5);
+    outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #635387;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(99, 83, 135, 0.3);
+    transition: transform 0.15s ease;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+input[type="range"]::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #635387;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 6px rgba(99, 83, 135, 0.3);
 }

@@ -30,20 +30,20 @@ export default function AmbientControls() {
   ]);
 
   return (
-    <GlassPanel className="w-full max-w-xs">
-      <h3 className="text-sm font-medium tracking-[0.15em] uppercase mb-4" style={{ color: 'var(--color-text-dim)' }}>
+    <section className="card-glass rounded-3xl p-5 flex flex-col gap-4">
+      <h3 className="text-[10px] uppercase tracking-[0.15em] text-secondary font-medium">
         🎧 Ambient Sounds
       </h3>
 
-      <div className="space-y-3">
+      <div className="space-y-4">
         {ambientChannels.map(({ key, label, icon, enableKey, volumeKey, toggleKey, setVolumeKey }) => (
           <div key={key} className="flex items-center gap-3">
             <button
               onClick={() => store[toggleKey]()}
-              className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm transition-all duration-300 ${
+              className={`w-10 h-10 rounded-xl flex items-center justify-center text-lg transition-all duration-300 ${
                 store[enableKey]
-                  ? 'bg-purple-500/20 shadow-[0_0_12px_rgba(139,92,246,0.3)]'
-                  : 'bg-white/5'
+                  ? 'bg-primary/20 text-primary shadow-[0_0_12px_rgba(99,83,135,0.2)]'
+                  : 'bg-surface-variant/20 text-outline hover:bg-surface-variant/40'
               }`}
               id={`ambient-toggle-${key}`}
               aria-label={`Toggle ${key}`}
@@ -51,9 +51,9 @@ export default function AmbientControls() {
               {icon}
             </button>
 
-            <div className="flex-1 min-w-0">
-              <p className="text-xs mb-1 truncate" style={{ color: store[enableKey] ? 'var(--color-text)' : 'var(--color-text-muted)' }}>
-                {label}
+            <div className="flex-1 min-w-0 flex flex-col justify-center">
+              <p className="text-xs mb-1.5 font-medium truncate" style={{ color: store[enableKey] ? '#1c1c19' : '#7a757f' }}>
+                {label.split(' ')[1]}
               </p>
               <input
                 type="range"
@@ -72,27 +72,9 @@ export default function AmbientControls() {
                 aria-label={`${key} volume`}
               />
             </div>
-
-            {/* Level indicator */}
-            <div className="flex gap-[2px] items-end h-4">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="w-[3px] rounded-full"
-                  style={{
-                    backgroundColor: store[enableKey] && store[volumeKey] > i * 0.2
-                      ? 'rgba(139, 92, 246, 0.7)'
-                      : 'rgba(255,255,255,0.1)',
-                    height: 4 + i * 2,
-                  }}
-                  animate={store[enableKey] ? { opacity: [0.5, 1, 0.5] } : { opacity: 0.3 }}
-                  transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.1 }}
-                />
-              ))}
-            </div>
           </div>
         ))}
       </div>
-    </GlassPanel>
+    </section>
   );
 }

@@ -220,7 +220,7 @@ const LoFiDashboard = () => {
 
       {/* ── Drawer ── */}
       <div className={`fixed top-0 right-0 h-full w-[70vw] max-w-[340px] sm:max-w-none sm:w-[420px] z-40 transform transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-        <div className="h-full glass-panel overflow-y-auto overflow-x-hidden"
+        <div className="h-full drawer-glass overflow-y-auto overflow-x-hidden"
           style={{ borderLeft: '1px solid rgba(229,226,221,0.15)' }}
         >
           <div className="absolute inset-0 grain-texture z-0 pointer-events-none"></div>
@@ -280,7 +280,7 @@ const LoFiDashboard = () => {
                   className="flex flex-col gap-5"
                 >
                   {/* Player Card */}
-                  <section className="bg-surface/50 backdrop-blur-md rounded-3xl overflow-hidden soft-shadow analog-border flex flex-col">
+                  <section className="card-glass rounded-3xl overflow-hidden flex flex-col">
                     {/* Source Toggle */}
                     <div className="flex gap-1 p-2 bg-surface-variant/20">
                       <button onClick={() => setMusicSource('local')} className={`flex-1 py-1.5 rounded-xl text-[10px] font-medium uppercase tracking-wider transition-all ${musicSource === 'local' ? 'bg-primary/20 text-primary' : 'text-outline hover:text-primary'}`}>Local Chill</button>
@@ -359,8 +359,8 @@ const LoFiDashboard = () => {
                   </section>
 
                   {/* Ambient Sounds */}
-                  <section className="bg-surface/50 backdrop-blur-md rounded-3xl p-5 soft-shadow analog-border">
-                    <h3 className="text-xs uppercase tracking-[0.15em] text-secondary font-medium mb-4">🎧 Ambient Sounds</h3>
+                  <section className="card-glass rounded-3xl p-5">
+                    <h3 className="text-[10px] uppercase tracking-[0.15em] text-secondary font-medium mb-4">🎧 Ambient Sounds</h3>
                     <div className="space-y-3">
                       <AmbientSlider icon="🌧️" label="Rain" enabled={store.rainEnabled} volume={store.rainVolume}
                         onToggle={store.toggleRain} onVolume={store.setRainVolume} />
@@ -385,7 +385,7 @@ const LoFiDashboard = () => {
                   transition={{ duration: 0.3 }}
                   className="flex flex-col gap-5"
                 >
-                  <section className="bg-surface/50 backdrop-blur-md rounded-3xl p-6 soft-shadow analog-border flex flex-col items-center">
+                  <section className="card-glass rounded-3xl p-6 flex flex-col items-center">
                     {/* Mode switcher */}
                     <div className="flex gap-1 p-1 bg-surface-variant/40 rounded-xl mb-6 w-full">
                       {[['focus','Focus'], ['short','Short'], ['long','Long']].map(([k, l]) => (
@@ -448,7 +448,7 @@ const LoFiDashboard = () => {
                   transition={{ duration: 0.3 }}
                   className="flex flex-col gap-5"
                 >
-                  <section className="bg-surface/50 backdrop-blur-md rounded-3xl p-6 soft-shadow analog-border flex flex-col items-center">
+                  <section className="card-glass rounded-3xl p-6 flex flex-col items-center">
                     <span className="text-[10px] uppercase tracking-[0.2em] text-secondary font-medium mb-4">Stopwatch</span>
 
                     <div className="text-5xl font-headline-xl tracking-tight tabular-nums mb-6">
@@ -489,7 +489,7 @@ const LoFiDashboard = () => {
             </AnimatePresence>
 
             {/* ── Tasks (always visible) ── */}
-            <section className="bg-surface/50 backdrop-blur-md rounded-3xl p-5 soft-shadow analog-border">
+            <section className="card-glass rounded-3xl p-5">
               <div className="flex justify-between items-baseline mb-4">
                 <h3 className="text-sm font-headline-lg-mobile">Unfinished notes</h3>
                 <span className="text-xs text-outline">3 items</span>
@@ -506,7 +506,7 @@ const LoFiDashboard = () => {
             </section>
 
             {/* ── Mood ── */}
-            <section className="bg-surface/50 backdrop-blur-md rounded-3xl p-5 soft-shadow analog-border">
+            <section className="card-glass rounded-3xl p-5">
               <h3 className="text-sm font-medium text-center mb-4">How are you feeling?</h3>
               <div className="flex justify-between items-center text-2xl px-2">
                 {['😔','😐','😌','😊','✨'].map((e, i) => (
