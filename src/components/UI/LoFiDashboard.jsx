@@ -326,14 +326,14 @@ const LoFiDashboard = () => {
                       </>
                     ) : (
                       <div className="flex flex-col w-full gap-3 mt-2 px-3 pb-4">
-                        <form onSubmit={handleSpotifySubmit} className="relative flex items-center w-full mt-2 shrink-0 h-14">
+                        <form onSubmit={handleSpotifySubmit} className="relative flex items-center w-full mt-2 shrink-0 h-14 min-h-[56px]">
                           <span className="material-symbols-outlined absolute left-4 text-gray-400 text-xl pointer-events-none">link</span>
                           <input 
                             type="text" 
                             value={spotifyInput}
                             onChange={(e) => setSpotifyInput(e.target.value)}
                             placeholder="Paste Spotify link..."
-                            className="w-full h-full bg-[#252525] border border-[#333] rounded-xl pl-12 pr-24 text-base text-white focus:outline-none focus:border-purple-500/50 transition-all placeholder:text-gray-500 shadow-sm"
+                            className="w-full h-full min-w-0 bg-[#252525] border border-[#333] rounded-xl pl-12 pr-24 text-base text-white focus:outline-none focus:border-purple-500/50 transition-all placeholder:text-gray-500 shadow-sm"
                           />
                           <button type="submit" className="absolute right-2 top-2 bottom-2 px-6 bg-[#3f3f46] hover:bg-[#4a4a52] text-white rounded-lg text-sm font-bold tracking-wider uppercase transition-colors flex items-center justify-center shadow-md">
                             Load
