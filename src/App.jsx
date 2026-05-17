@@ -3,9 +3,9 @@ import LoFiDashboard from './components/UI/LoFiDashboard';
 
 function App() {
   return (
-    <div className="relative w-full h-full overflow-hidden select-none">
+    <div className="relative w-screen h-screen overflow-hidden select-none" style={{ height: '100dvh' }}>
       {/* Background layers */}
-      <div className="absolute inset-0 z-0">
+      <div className="fixed inset-0 z-0">
         <MediaBackground />
       </div>
 

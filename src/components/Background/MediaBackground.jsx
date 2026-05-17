@@ -7,7 +7,7 @@ export default function MediaBackground() {
   const isVideo = bg.media?.endsWith('.mp4');
 
   return (
-    <div className="absolute inset-0 w-full h-full">
+    <div className="fixed inset-0" style={{ width: '100vw', height: '100vh', height: '100dvh' }}>
       {isVideo ? (
         <video
           key={bg.id}
@@ -16,14 +16,16 @@ export default function MediaBackground() {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ minWidth: '100vw', minHeight: '100vh', minHeight: '100dvh' }}
         />
       ) : (
         <img
           key={bg.id}
           src={bg.media || bg.gif}
           alt={bg.name}
-          className="w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ minWidth: '100vw', minHeight: '100vh', minHeight: '100dvh' }}
         />
       )}
       {/* Subtle vignette overlay */}
