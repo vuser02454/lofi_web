@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Avery's Cozy Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.grain-texture {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDc9Y7hRDZg1BWQuh5T6_YEM6aTFQIEie16yHMfsFa_0GFrIrZGxRONeOzCigTmcwjGD-XcgDcfV3JDiT87K4sbIK5KSq4Dxk5unb6A2rxUR_KZGlsH-aKsH3Da57ajG8eqhM9i6r1c-JU5nM5OnzIQnvCWfvy6Jb6fw4dojKLo5gnKw0m6rs_G6uHT8X_1Xb5dbnQbedl55q5Rqhqzcy58w6jmPXopGrLDuAGncO_cgdNyULsjzw70gHgyLNe3QPm6Egld_rtZ6mnU);
+    opacity: 0.03;
+    pointer-events: none
+    }
+.soft-shadow {
+    box-shadow: 0 4px 12px rgba(138, 121, 175, 0.08)
+    }
+.analog-border {
+    border: 1px solid #e5e2dd
+    }</style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-surface-variant": "#49454e",
+                      "surface": "#fcf9f4",
+                      "outline-variant": "#cbc4cf",
+                      "tertiary-fixed": "#fadccf",
+                      "outline": "#7a757f",
+                      "surface-tint": "#665689",
+                      "on-tertiary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "on-surface": "#1c1c19",
+                      "error": "#ba1a1a",
+                      "on-primary-fixed": "#211141",
+                      "surface-variant": "#e5e2dd",
+                      "on-tertiary-fixed-variant": "#564239",
+                      "on-error": "#ffffff",
+                      "surface-container-low": "#f6f3ee",
+                      "on-primary": "#ffffff",
+                      "secondary-fixed-dim": "#ffb696",
+                      "on-secondary-container": "#7a452c",
+                      "secondary-fixed": "#ffdbcd",
+                      "tertiary": "#6d574d",
+                      "surface-container-highest": "#e5e2dd",
+                      "background": "#fcf9f4",
+                      "secondary-container": "#ffb696",
+                      "tertiary-fixed-dim": "#ddc1b4",
+                      "on-tertiary-container": "#fffbff",
+                      "inverse-surface": "#31302d",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed": "#eaddff",
+                      "on-primary-container": "#fffbff",
+                      "primary-fixed-dim": "#d0bdf8",
+                      "on-secondary-fixed-variant": "#6c3922",
+                      "surface-container-high": "#ebe8e3",
+                      "on-background": "#1c1c19",
+                      "on-tertiary-fixed": "#271810",
+                      "on-secondary-fixed": "#351000",
+                      "on-secondary": "#ffffff",
+                      "inverse-primary": "#d0bdf8",
+                      "inverse-on-surface": "#f3f0eb",
+                      "surface-bright": "#fcf9f4",
+                      "secondary": "#885037",
+                      "surface-container": "#f0ede9",
+                      "primary": "#635387",
+                      "primary-container": "#7c6ca1",
+                      "on-primary-fixed-variant": "#4e3e70",
+                      "surface-dim": "#dcdad5",
+                      "tertiary-container": "#877065",
+                      "error-container": "#ffdad6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-desktop": "64px",
+                      "gutter": "24px",
+                      "margin-mobile": "20px",
+                      "unit": "8px",
+                      "container-max-width": "1120px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Vollkorn"],
+                      "label-md": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"],
+                      "headline-lg-mobile": ["Vollkorn"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "headline-xl": ["Vollkorn"]
+              },
+              "fontSize": {
+                      "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen relative font-body-md text-body-md overflow-x-hidden">
+<!-- Grain Overlay -->
+<div class="fixed inset-0 grain-texture z-0"></div>
+<!-- Navigation Shell: TopAppBar -->
+<header class="w-full top-0 sticky bg-surface dark:bg-surface-dim flex items-center justify-between px-margin-mobile md:px-margin-desktop py-4 z-40">
+<div class="flex items-center gap-4">
+<img alt="User Profile" class="w-10 h-10 rounded-full border-2 border-primary-container object-cover" data-alt="A warm and friendly close-up portrait of a young professional with a kind expression. The lighting is soft and golden, characteristic of a late afternoon sun. The background is a gently blurred minimalist room with warm cream walls and natural textures, maintaining a serene and tactile aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc9pM81MKJB7drl-ZOb7MzpOBDNFZmrZf-nkcYNNv2tna5nT1PKzEdLwQlTuQH_FbhlKZxhmlY414yp0UbgVGkmcOUQ7ZJb6YEC5uifNfr9p8T-iyv3lqRAhagafOYKqlZP38P3rQxLwkdjHOeRz2kMd9H71wuMPELp0LFV6GqmwG2pnjGFNnWUGIxmu1gylLLPszoG_WSZ2TXJo51lMLd9qBSIwe-nUYNoDXFYrHPOLD8qCHg8V9GxCuXCgUp-4olBYGHH9e1kuDX"/>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary dark:text-primary-fixed-dim">Good evening, Avery</h1>
+</div>
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed-dim p-2 hover:opacity-80 transition-opacity active:scale-95 duration-200">
+            settings
+        </button>
+</header>
+<main class="relative z-10 max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-8 md:py-12">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Bento Grid Layout -->
+<!-- 1. Now Playing Music Widget (Large, spans 8 cols) -->
+<section class="md:col-span-8 bg-surface-container-lowest analog-border rounded-xl p-8 soft-shadow flex flex-col md:flex-row gap-8 items-center md:items-start group">
+<div class="w-48 h-48 flex-shrink-0 relative">
+<img alt="Album Art" class="w-full h-full object-cover rounded-lg shadow-lg group-hover:scale-[1.02] transition-transform duration-500" data-alt="A nostalgic lo-fi album cover illustration featuring a cluttered desk with a cassette player, a steaming mug of tea, and a view of a rainy city through a window. The color palette is composed of warm browns, soft purples, and muted oranges, creating a comforting and intentional mood with a grainy, analog texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCX27NGJfxLnlSCC2x473eRAlf3i80J85cstzO3Rq724XgivkyKeU2nm7XusEFnHkJJyiAxrkT0iwpk52fCH8Qpn_UE2Pd80O8g55Rk4Jyr3uEqNLjdJMFBjMl3MqTsr1ILkQZnSmZGBj2p3cVqah23KgWqi0vcvJ11c2VqSH30tfmZOc8XsDGsxOxCEK-Z9SYS0OaDvYEzB_slTyA4Fj5Iy0ROnscszvpR_9WO57yrEvKmhy81umyyjE-6NbPVb2cR-QD-4S74g5uG"/>
+<div class="absolute inset-0 bg-primary/10 rounded-lg pointer-events-none"></div>
+</div>
+<div class="flex-grow w-full">
+<div class="mb-6 text-center md:text-left">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-widest block mb-2">Now Playing</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-1">Midnight Coffee</h2>
+<p class="text-on-surface-variant font-body-md italic">The Lo-Fi Collective — Analog Dreams</p>
+</div>
+<div class="space-y-4">
+<!-- Progress Bar -->
+<div class="relative w-full h-1.5 bg-surface-variant rounded-full overflow-hidden">
+<div class="absolute top-0 left-0 h-full w-[45%] bg-primary transition-all duration-1000 ease-linear"></div>
+</div>
+<div class="flex justify-between font-label-md text-label-md text-outline">
+<span>1:42</span>
+<span>3:24</span>
+</div>
+<!-- Controls -->
+<div class="flex items-center justify-center md:justify-start gap-8 mt-4">
+<button class="material-symbols-outlined text-outline hover:text-primary transition-colors text-3xl">skip_previous</button>
+<button class="w-14 h-14 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-md hover:scale-105 active:scale-95 transition-all" id="playBtn">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+<button class="material-symbols-outlined text-outline hover:text-primary transition-colors text-3xl">skip_next</button>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. Pomodoro Timer Widget (Spans 4 cols) -->
+<section class="md:col-span-4 bg-surface-container-high analog-border rounded-xl p-8 soft-shadow flex flex-col items-center justify-center text-center">
+<span class="font-label-md text-label-md text-tertiary mb-4 uppercase tracking-wider">Deep Focus</span>
+<div class="font-headline-xl text-headline-xl text-on-surface mb-6 tracking-tighter" id="timer-display">
+                    25:00
+                </div>
+<button class="px-8 py-3 bg-secondary-container text-on-secondary-container font-label-md text-label-md rounded-full border border-secondary/20 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all" id="timer-toggle">
+                    START FOCUS
+                </button>
+<div class="mt-6 flex gap-2">
+<span class="w-2 h-2 rounded-full bg-primary/20"></span>
+<span class="w-2 h-2 rounded-full bg-primary/20"></span>
+<span class="w-2 h-2 rounded-full bg-primary/20"></span>
+<span class="w-2 h-2 rounded-full bg-primary/10"></span>
+</div>
+</section>
+<!-- 3. Mood Tracker (Spans 5 cols) -->
+<section class="md:col-span-5 bg-surface-container-lowest analog-border rounded-xl p-8 soft-shadow">
+<h3 class="font-headline-lg text-headline-lg-mobile text-primary mb-6">How are you feeling?</h3>
+<div class="flex justify-between items-center px-2">
+<button class="group flex flex-col items-center gap-2">
+<span class="text-3xl grayscale group-hover:grayscale-0 transition-all transform group-hover:scale-125">😔</span>
+<span class="font-label-md text-[10px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">Tired</span>
+</button>
+<button class="group flex flex-col items-center gap-2">
+<span class="text-3xl grayscale group-hover:grayscale-0 transition-all transform group-hover:scale-125">😐</span>
+<span class="font-label-md text-[10px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">Chill</span>
+</button>
+<button class="group flex flex-col items-center gap-2">
+<span class="text-3xl grayscale group-hover:grayscale-0 transition-all transform group-hover:scale-125">😌</span>
+<span class="font-label-md text-[10px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">Calm</span>
+</button>
+<button class="group flex flex-col items-center gap-2">
+<span class="text-3xl grayscale group-hover:grayscale-0 transition-all transform group-hover:scale-125">🙂</span>
+<span class="font-label-md text-[10px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">Good</span>
+</button>
+<button class="group flex flex-col items-center gap-2">
+<span class="text-3xl grayscale group-hover:grayscale-0 transition-all transform group-hover:scale-125">✨</span>
+<span class="font-label-md text-[10px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">Radiant</span>
+</button>
+</div>
+<div class="mt-8 p-4 bg-surface-container rounded-lg border-l-4 border-tertiary">
+<p class="font-body-md italic text-on-surface-variant text-sm">"The slow rhythm of the evening is your sanctuary."</p>
+</div>
+</section>
+<!-- 4. To-do List (Spans 7 cols) -->
+<section class="md:col-span-7 bg-surface-container-lowest analog-border rounded-xl p-8 soft-shadow">
+<div class="flex justify-between items-end mb-8">
+<h3 class="font-headline-lg text-headline-lg-mobile text-primary">Unfinished notes</h3>
+<span class="font-label-md text-label-md text-outline">3 items</span>
+</div>
+<ul class="space-y-4">
+<li class="flex items-center gap-4 group">
+<button class="w-6 h-6 rounded border-1.5 border-outline-variant group-hover:border-primary flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-xs text-primary hidden">check</span>
+</button>
+<span class="font-body-md text-on-surface-variant group-hover:text-on-surface transition-colors">Finish chapter 4 of 'The Slow Home'</span>
+</li>
+<li class="flex items-center gap-4 group">
+<button class="w-6 h-6 rounded border-1.5 border-primary flex items-center justify-center bg-primary-container/20">
+<span class="material-symbols-outlined text-xs text-primary block">check</span>
+</button>
+<span class="font-body-md text-outline line-through">Water the monstera and snake plant</span>
+</li>
+<li class="flex items-center gap-4 group">
+<button class="w-6 h-6 rounded border-1.5 border-outline-variant group-hover:border-primary flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-xs text-primary hidden">check</span>
+</button>
+<span class="font-body-md text-on-surface-variant group-hover:text-on-surface transition-colors">Journal about today's quiet moments</span>
+</li>
+</ul>
+<div class="mt-8 pt-4 border-t border-surface-variant">
+<button class="flex items-center gap-2 text-outline hover:text-primary transition-colors font-label-md text-label-md">
+<span class="material-symbols-outlined text-lg">add</span>
+                        Write a new thought
+                    </button>
+</div>
+</section>
+</div>
+</main>
+<!-- Navigation Shell: BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-3 pb-safe bg-surface-container-high shadow-[0_-4px_12px_rgba(138,121,175,0.08)] z-50 rounded-t-xl md:hidden">
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-5 py-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-md text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest rounded-full transition-colors" href="#">
+<span class="material-symbols-outlined">library_music</span>
+<span class="font-label-md text-[10px]">Library</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest rounded-full transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-[10px]">Profile</span>
+</a>
+</nav>
+<!-- Desktop Sidebar/Nav (Integrated into TopAppBar usually but can be added if needed) -->
+<script>
+        // Music Player Toggle Interaction
+        const playBtn = document.getElementById('playBtn');
+        let isPlaying = false;
+        playBtn.addEventListener('click', () => {
+            isPlaying = !isPlaying;
+            const icon = playBtn.querySelector('.material-symbols-outlined');
+            icon.textContent = isPlaying ? 'pause' : 'play_arrow';
+            playBtn.classList.toggle('bg-primary-container');
+        });
+
+        // Simple Pomodoro Timer Logic
+        let timerSeconds = 1500;
+        let timerInterval;
+        let isTimerRunning = false;
+        const timerDisplay = document.getElementById('timer-display');
+        const timerToggle = document.getElementById('timer-toggle');
+
+        function updateDisplay() {
+            const mins = Math.floor(timerSeconds / 60);
+            const secs = timerSeconds % 60;
+            timerDisplay.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        timerToggle.addEventListener('click', () => {
+            if (isTimerRunning) {
+                clearInterval(timerInterval);
+                timerToggle.textContent = 'RESUME FOCUS';
+                timerToggle.classList.replace('bg-primary-container', 'bg-secondary-container');
+            } else {
+                timerToggle.textContent = 'PAUSE';
+                timerToggle.classList.replace('bg-secondary-container', 'bg-primary-container');
+                timerInterval = setInterval(() => {
+                    if (timerSeconds > 0) {
+                        timerSeconds--;
+                        updateDisplay();
+                    } else {
+                        clearInterval(timerInterval);
+                        alert("Session complete. Take a breath.");
+                    }
+                }, 1000);
+            }
+            isTimerRunning = !isTimerRunning;
+        });
+
+        // Micro-interactions for todo list
+        document.querySelectorAll('li button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const icon = this.querySelector('.material-symbols-outlined');
+                const text = this.nextElementSibling;
+                const isChecked = icon.classList.contains('hidden');
+                
+                if (isChecked) {
+                    icon.classList.remove('hidden');
+                    text.classList.add('line-through', 'text-outline');
+                    this.classList.add('bg-primary-container/20', 'border-primary');
+                } else {
+                    icon.classList.add('hidden');
+                    text.classList.remove('line-through', 'text-outline');
+                    this.classList.remove('bg-primary-container/20', 'border-primary');
+                }
+            });
+        });
+    </script>
+</body></html>

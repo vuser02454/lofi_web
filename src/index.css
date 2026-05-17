@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", "Inter", "Zen Kaku Gothic New", system-ui, sans-serif;
+  --font-jp: "Zen Kaku Gothic New", "Inter", sans-serif;
+  
+  /* Tailwind 4 Colors from Dashboard */
+  --color-on-surface-variant: #49454e;
+  --color-surface: #fcf9f4;
+  --color-outline-variant: #cbc4cf;
+  --color-tertiary-fixed: #fadccf;
+  --color-outline: #7a757f;
+  --color-surface-tint: #665689;
+  --color-on-tertiary: #ffffff;
+  --color-on-error-container: #93000a;
+  --color-on-surface: #1c1c19;
+  --color-error: #ba1a1a;
+  --color-on-primary-fixed: #211141;
+  --color-surface-variant: #e5e2dd;
+  --color-on-tertiary-fixed-variant: #564239;
+  --color-on-error: #ffffff;
+  --color-surface-container-low: #f6f3ee;
+  --color-on-primary: #ffffff;
+  --color-secondary-fixed-dim: #ffb696;
+  --color-on-secondary-container: #7a452c;
+  --color-secondary-fixed: #ffdbcd;
+  --color-tertiary: #6d574d;
+  --color-surface-container-highest: #e5e2dd;
+  --color-background: #fcf9f4;
+  --color-secondary-container: #ffb696;
+  --color-tertiary-fixed-dim: #ddc1b4;
+  --color-on-tertiary-container: #fffbff;
+  --color-inverse-surface: #31302d;
+  --color-surface-container-lowest: #ffffff;
+  --color-primary-fixed: #eaddff;
+  --color-on-primary-container: #fffbff;
+  --color-primary-fixed-dim: #d0bdf8;
+  --color-on-secondary-fixed-variant: #6c3922;
+  --color-surface-container-high: #ebe8e3;
+  --color-on-background: #1c1c19;
+  --color-on-tertiary-fixed: #271810;
+  --color-on-secondary-fixed: #351000;
+  --color-on-secondary: #ffffff;
+  --color-inverse-primary: #d0bdf8;
+  --color-inverse-on-surface: #f3f0eb;
+  --color-surface-bright: #fcf9f4;
+  --color-secondary: #885037;
+  --color-surface-container: #f0ede9;
+  --color-primary: #635387;
+  --color-primary-container: #7c6ca1;
+  --color-on-primary-fixed-variant: #4e3e70;
+  --color-surface-dim: #dcdad5;
+  --color-tertiary-container: #877065;
+  --color-error-container: #ffdad6;
+
+  /* Custom Spacing */
+  --spacing-margin-desktop: 64px;
+  --spacing-gutter: 24px;
+  --spacing-margin-mobile: 20px;
+  --spacing-unit: 8px;
+  --spacing-container-max-width: 1120px;
+
+  /* Custom Fonts */
+  --font-headline-lg: "Vollkorn", serif;
+  --font-label-md: "Plus Jakarta Sans", sans-serif;
+  --font-body-md: "Plus Jakarta Sans", sans-serif;
+  --font-headline-lg-mobile: "Vollkorn", serif;
+  --font-body-lg: "Plus Jakarta Sans", sans-serif;
+  --font-headline-xl: "Vollkorn", serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #0a0a12;
+  color: var(--color-on-surface);
+  font-family: var(--font-sans);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(139, 92, 246, 0.5), 0 0 40px rgba(139, 92, 246, 0.2);
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@layer utilities {
+    .grain-texture {
+        background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDc9Y7hRDZg1BWQuh5T6_YEM6aTFQIEie16yHMfsFa_0GFrIrZGxRONeOzCigTmcwjGD-XcgDcfV3JDiT87K4sbIK5KSq4Dxk5unb6A2rxUR_KZGlsH-aKsH3Da57ajG8eqhM9i6r1c-JU5nM5OnzIQnvCWfvy6Jb6fw4dojKLo5gnKw0m6rs_G6uHT8X_1Xb5dbnQbedl55q5Rqhqzcy58w6jmPXopGrLDuAGncO_cgdNyULsjzw70gHgyLNe3QPm6Egld_rtZ6mnU');
+        opacity: 0.05;
+        pointer-events: none;
+    }
+    .soft-shadow {
+        box-shadow: 0 4px 12px rgba(138, 121, 175, 0.08);
+    }
+    .analog-border {
+        border: 1px solid rgba(229, 226, 221, 0.2);
+    }
+    .glass-panel {
+        background: rgba(252, 249, 244, 0.7);
+        backdrop-filter: blur(20px) saturate(1.2);
+        -webkit-backdrop-filter: blur(20px) saturate(1.2);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .dark .glass-panel {
+        background: rgba(49, 48, 45, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+}
